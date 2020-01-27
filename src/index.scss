@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap');
+$bgGrey: #26272c;
+$lightGrey: #4f525a;
+@mixin position($val) {
+  @if $val == 'topLeft' {
+    top: 10px;
+    left: 10px;
+  } @else if $val == 'topRight' {
+    top: 10px;
+    right: 10px;
+  } @else if $val == 'bottomRight' {
+    bottom: 10px;
+    right: 10px;
+  } @else {
+    bottom: 10px;
+    left: 10px;
+  }
+}
+
+body {
+  background-color: $bgGrey;
+  font-family: Helvetica, sans-serif;
+}
+
+#all {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#display {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 100px;
+}
+#display h2 {
+  font-family: Rubik Mono One;
+  font-style: normal;
+  font-weight: normal;
+  padding-top: 12px;
+  color: #bebebe;
+  text-shadow: 0px 3px 1px rgba(0, 0, 0, 0.25);
+}
+.innerDisplay {
+  background: $lightGrey;
+  width: 300px;
+  height: 60px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#drum-machine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 710px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  // flex: 30% 30% 30%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.drum-pad {
+  position: relative;
+  width: 190px;
+  height: 144px;
+  margin: 20px;
+  background: #4f525a;
+  border: 2px solid #1a1b1e;
+  border-radius: 5px;
+  outline: none;
+  -webkit-box-shadow: 0px 5px 0px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 0px 5px 0px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: 0px 5px 0px 0px #1a1b1e;
+  transition: all 0.05s ease-in;
+}
+.drum-pad img {
+  width: 70px;
+}
+#six img,
+#seven img {
+  width: 40px;
+}
+#nine img {
+  width: 110px;
+}
+.drum-pad:active {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+.keyDown {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+.keyUp {
+  box-shadow: 0px 5px 0px 0px #1a1b1e;
+  transform: translateY(0);
+}
+
+.pins {
+  height: 5px;
+  width: 5px;
+  background-color: #26272c;
+  position: absolute;
+  border-radius: 50%;
+}
+.topLeft {
+  @include position(topLeft);
+}
+.bottomRight {
+  @include position(bottomRight);
+}
+.topRight {
+  @include position(topRight);
+}
+.bottomLeft {
+  @include position(bottomLeft);
+}
+nav {
+  width: 100%;
+  height: 800px;
+}
+#sideBar {
+  width: 25%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: $lightGrey;
+  z-index: 1;
+  transition: all 0.5s ease-in-out;
+  transform: translateX(110%);
+  img {
+    transition: all 0.2s ease-in-out;
+    // border: none;
+    // outline: none;
+    // font-size: 20px;
+    // color: white;
+    opacity: 0.4;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    z-index: 100;
+  }
+  img:hover {
+    opacity: 1;
+  }
+  h2 {
+    color: white;
+    text-align: center;
+    opacity: 0.7;
+    margin: 100px 0 50px 0;
+    font-weight: 400;
+    font-size: 25px;
+  }
+  p {
+    padding: 100px 80px;
+    text-align: center;
+    color: white;
+    opacity: 0.7;
+    font-weight: 100;
+    font-size: 18px;
+  }
+}
+.volumeBlock {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+  p {
+    padding: 0 !important;
+    font-size: 16px !important;
+    font-weight: 900 !important;
+    color: $bgGrey !important;
+  }
+  input {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    width: 160px;
+    margin-top: 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.4) inset;
+    background-color: #cecece;
+    overflow: hidden;
+    outline: none;
+    cursor: col-resize;
+  }
+
+  input::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    height: 10px;
+    background: #3e709e;
+    box-shadow: -80px 0 0 80px #3e709e;
+  }
+}
+#settingIcon {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  width: 30px;
+  opacity: 0.4;
+  cursor: pointer;
+}
+#settingIcon:hover {
+  opacity: 0.7;
+}
+
+.showSideBar {
+  transform: translateX(0) !important;
+}
+
+#keyboardText {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 14px;
+  font-weight: 900;
+  color: $bgGrey;
+}
+
+@media (max-width: 740px) {
+  #drum-machine {
+    width: 600px;
+
+    justify-content: center;
+    //   flex-direction: row;
+    // flex-wrap: wrap;
+    // align-items: center;
+    // justify-content: space-evenly;
+  }
+  .drum-pad {
+    width: 120px;
+    height: 100px;
+  }
+  #sideBar {
+    width: 50%;
+  }
+  #display {
+    display: none;
+  }
+}
+// @media (max-width: 420px) {
+//   #drum-machine {
+//     width: 100%;
+//   }
+//   .drum-pad {
+//     width: 80px;
+//     height: 60px;
+//   }
+//   #sideBar {
+//     width: 50%;
+//   }
+// }
