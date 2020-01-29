@@ -10,8 +10,9 @@ const SideBar = props => {
     target.volume = value / 100;
     target.currentTime = 0;
     target.play();
-    console.log(instruments);
   };
+
+  var random = Math.floor(Math.random() * 10 + 1);
 
   return (
     <>
@@ -21,7 +22,7 @@ const SideBar = props => {
           src={require('./imgs/arrow.png')}
           onClick={props.hideSideBar}
         />
-        <h2>Volume</h2>
+        <img data-img='2' src={require('./imgs/speaker.png')} />
 
         {instruments.map((pad, index) => (
           <div key={index} className='volumeBlock'>
@@ -31,7 +32,7 @@ const SideBar = props => {
               onChange={controlVolume}
               type='range'
               max='100'
-              defaultValue='100%'
+              defaultValue='90'
               className='progressBar'
             />
           </div>

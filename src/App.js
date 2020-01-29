@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import instruments from './components/instruments';
 import SideBar from './components/sidebar';
-// import Volumes from './components/volumeSettings'
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clickedPad: '-',
+      clickedPad: 'Drum Machine',
       setting: false,
     };
   }
@@ -43,7 +42,7 @@ export default class App extends Component {
     });
   };
 
-  playSound(e) {
+  playSound = e => {
     //play the sound and display it on the display container
 
     const title = e.currentTarget.name;
@@ -66,7 +65,7 @@ export default class App extends Component {
       ...this.state,
       clickedPad: title,
     });
-  }
+  };
 
   showSideBar = () => {
     //show the sidebar
@@ -99,7 +98,11 @@ export default class App extends Component {
           src={require('./components/imgs/settings.png')}
           onClick={this.showSideBar}
         />
-        <SideBar setting={setting} hideSideBar={this.hideSideBar} />
+        <SideBar
+          playSound={this.playSound}
+          setting={setting}
+          hideSideBar={this.hideSideBar}
+        />
 
         <div id='drum-machine'>
           <div id='display'>
@@ -119,7 +122,7 @@ export default class App extends Component {
               id={pad.id}
               name={pad.title}
               ref={val => (this[pad.id] = val)}
-              onClick={this.playSound.bind(this)}
+              onClick={this.playSound}
             >
               <p id='keyboardText'>{pad.keyboard}</p>
               <img alt={pad.title + ' icon'} src={pad.img} />
@@ -127,6 +130,12 @@ export default class App extends Component {
             </button>
           ))}
         </div>
+        <footer>
+          <img
+            draggable='false'
+            src={require('./components/imgs/footer.png')}
+          />
+        </footer>
       </div>
     );
   }

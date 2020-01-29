@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400&display=swap');
 $bgGrey: #26272c;
 $lightGrey: #4f525a;
 @mixin position($val) {
@@ -20,6 +21,10 @@ $lightGrey: #4f525a;
 body {
   background-color: $bgGrey;
   font-family: Helvetica, sans-serif;
+}
+p,
+h2 {
+  cursor: default;
 }
 
 #all {
@@ -131,12 +136,8 @@ nav {
   z-index: 1;
   transition: all 0.5s ease-in-out;
   transform: translateX(110%);
-  img {
+  img:first-child {
     transition: all 0.2s ease-in-out;
-    // border: none;
-    // outline: none;
-    // font-size: 20px;
-    // color: white;
     opacity: 0.4;
     cursor: pointer;
     position: absolute;
@@ -147,13 +148,10 @@ nav {
   img:hover {
     opacity: 1;
   }
-  h2 {
-    color: white;
-    text-align: center;
-    opacity: 0.7;
-    margin: 100px 0 50px 0;
-    font-weight: 400;
-    font-size: 25px;
+  img[data-img='2'] {
+    width: 40px;
+    margin: 100px 0 60px 50%;
+    transform: translateX(-50%);
   }
   p {
     padding: 100px 80px;
@@ -173,7 +171,8 @@ nav {
     padding: 0 !important;
     font-size: 16px !important;
     font-weight: 900 !important;
-    color: $bgGrey !important;
+    color: #bebebe !important;
+    cursor: default;
   }
   input {
     -webkit-appearance: none;
@@ -183,7 +182,7 @@ nav {
     margin-top: 18px;
     border-radius: 10px;
     box-shadow: 0 2px 1px rgba(0, 0, 0, 0.4) inset;
-    background-color: #cecece;
+    background-color: #bebebe;
     overflow: hidden;
     outline: none;
     cursor: col-resize;
@@ -222,6 +221,12 @@ nav {
   color: $bgGrey;
 }
 
+footer img {
+  margin: 260px 0 0 20px;
+  width: 22px;
+}
+
+// ipad
 @media (max-width: 740px) {
   #drum-machine {
     width: 600px;
@@ -243,15 +248,3 @@ nav {
     display: none;
   }
 }
-// @media (max-width: 420px) {
-//   #drum-machine {
-//     width: 100%;
-//   }
-//   .drum-pad {
-//     width: 80px;
-//     height: 60px;
-//   }
-//   #sideBar {
-//     width: 50%;
-//   }
-// }
