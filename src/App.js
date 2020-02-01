@@ -103,7 +103,11 @@ export default class App extends Component {
           setting={setting}
           hideSideBar={this.hideSideBar}
         />
-
+        <h2 id='mobileMessage'>
+          Thank you for visiting this app. <br /> It currently does not support
+          small devices.
+          <br /> It's coming up soon.
+        </h2>
         <div id='drum-machine'>
           <div id='display'>
             <div className='innerDisplay'>

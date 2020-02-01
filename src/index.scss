@@ -226,26 +226,41 @@ footer img {
   margin: 240px 0 0 20px;
   width: 22px;
 }
+#mobileMessage {
+  display: none;
+}
 
 // ipad
 @media (max-width: 740px) {
-  #drum-machine {
-    width: 600px;
+  // #drum-machine {
+  //   // width: 600px;
 
-    justify-content: center;
-    //   flex-direction: row;
-    // flex-wrap: wrap;
-    // align-items: center;
-    // justify-content: space-evenly;
-  }
-  .drum-pad {
-    width: 120px;
-    height: 100px;
-  }
-  #sideBar {
-    width: 50%;
-  }
-  #display {
+  //   // justify-content: center;
+  //   // //   flex-direction: row;
+  //   // // flex-wrap: wrap;
+  //   // // align-items: center;
+  //   // // justify-content: space-evenly;
+  // }
+  // .drum-pad {
+  //   width: 120px;
+  //   height: 100px;
+  // }
+  // #sideBar {
+  //   width: 50%;
+  // }
+  #display,
+  #drum-machine,
+  #sideBar,
+  footer,
+  #settingIcon {
     display: none;
+  }
+  #mobileMessage {
+    display: block;
+    color: white;
+    text-align: center;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-weight: 200;
   }
 }
